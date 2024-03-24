@@ -1,5 +1,5 @@
 import mysql.connector as sql
-mycon=sql.connect(host='localhost',user='root',password='Anant@1987', database='myweb')
+mycon=sql.connect(host='localhost',user='root',password='**********', database='myweb')
 # print("Sql Server Connection Id : ",mycon.connection_id)
 mycur=mycon.cursor()
 print("1. Press 1 for Sign up")
