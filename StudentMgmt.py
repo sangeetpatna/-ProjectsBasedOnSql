@@ -1,5 +1,5 @@
 import mysql.connector as sql
-sqlcon=sql.connect(host='localhost',user='root',password='Anant@1987',database='stumgmt')
+sqlcon=sql.connect(host='localhost',user='root',password='*********',database='stumgmt')
 sqlcur=sqlcon.cursor()
 print("\t\t...........................................................................")
 print("\t\t\t\t\t    Welcome to Hubnet")
