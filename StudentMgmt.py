@@ -1,0 +1,73 @@
+import mysql.connector as sql
+sqlcon=sql.connect(host='localhost',user='root',password='Anant@1987',database='stumgmt')
+sqlcur=sqlcon.cursor()
+print("\t\t...........................................................................")
+print("\t\t\t\t\t    Welcome to Hubnet")
+print("\t\t...........................................................................")
+ch=int(input("\t\tPress 1 for Login or Press 2 for SignUp : "))
+if ch==1:
+    print("\n\t\t\t\t\t\tUser Login")
+    uid=input("\n\t\t\tEnter UserId     :   ")
+    pas=input("\t\t\tEnter Password   :   ")
+    q="select userid,password from users where userid='{}' and password='{}'".format(uid,pas)
+    sqlcur.execute(q)
+    data=sqlcur.fetchall()
+    if data==[]:
+        print("Login Fail due to invalid entry!")
+    else:
+        print("\t\t...........................................................................")
+        print("\t\t\t\tWelcome to Hubnet Student Management System")
+        print("\t\t...........................................................................")
+        print("\t\tPress 1 for New Entry of student      : ")
+        print("\t\tPress 2 for searching student details : ")
+        print("\t\tPress 3 for updating  student details : ")
+        print("\t\tPress 4 for deleting student records  : ")
+        print("\t\tPress 5 for exit                      : ")
+        opt=int(input("\t\tEnter your choice : "))
+        if opt==1:
+            print("\n\t\t\t\t\t\tEnter Student details")
+            sid=input("\t\tEnter Student Id        : ")
+            sname=input("\t\tEnter student name      : ")
+            dob=input("\t\tEnter Date of birth     : ")
+            doa=input("\t\tEnter Date of admission : ")
+            mn=int(input("\t\tEnter Mobile No.        : "))
+            cid=input("\t\tEnter the CID           : ")
+            q1="insert into student values('{}','{}','{}','{}','{}','{}')".format(sid,sname,dob,doa,mn,cid)
+            sqlcur.execute(q1)
+            sqlcon.commit()
+            print("Student record saved successfully!")
+        elif opt==2:
+            sid=input("\t\tEnter Student Id        : ")
+            q="select * from student where sid='{}'".format(sid) 
+            sqlcur.execute(q)
+            data=sqlcur.fetchall()
+            if data==[]:
+                print("Record not found!")
+            else:
+                print("\n\t\t Record found!",data)
+        elif opt==3:
+            chh=int(input("\t\tpress 1 to update mob_no. or 2 to update cid : "))
+            if chh==1:
+                sid=input("\t\tEnter Student Id to update record      : ")
+                nmn=int(input("Enter New Mobile No.  : "))
+                q="update student set mob_no='{}' where sid='{}'".format(nmn,sid)
+                sqlcur.execute(q)
+                sqlcon.commit()
+                print("Student record updated successfully!")
+        elif opt==4:
+            sid=input("\t\tEnter Student Id to delete record      : ")
+            q="delete from student where sid='{}'".format(sid)
+            sqlcur.execute(q)
+            sqlcon.commit()
+            print("Student record of sid",sid,"has been deleted successfully!")
+        else:
+            print("Thanks for using Hubnet Student Management System!")
+            exit(1)
+elif ch==2: 
+    print("\n\t\t\t\tUser SignUp")
+    uid=input("\n\t\t\tEnter UserId     :   ")
+    pas=input("\t\t\tEnter Password   :   ")
+    q="insert into users values('{}','{}')".format(uid,pas)
+    sqlcur.execute(q)
+    sqlcon.commit()
+    print("Thanks for signing up!") 
