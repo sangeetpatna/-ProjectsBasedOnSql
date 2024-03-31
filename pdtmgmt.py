@@ -72,7 +72,7 @@ if ch==1:
                 print("Thanks for using Dawa Pharma Management System!")
                 exit(1)
         elif opt==4:
-            pid=input("\t\tEnter Student Id to delete record      : ")
+            pid=input("\t\tEnter Product Id to delete record      : ")
             q="delete from product where pid='{}'".format(pid)
             sqlcur.execute(q)
             sqlcon.commit()
@@ -153,12 +153,12 @@ if ch==1:
                     print("Choice is invalid!")
                     print("Thanks for using Dawa Pharma Management System!")
                     exit(1)
-            elif opt==4:
-                cuid=input("\t\tEnter Customer Id to delete record      : ")
+            elif cho==4:
+                cuid=input("\t\tEnter Customer Id to delete order record      : ")
                 q="delete from customer where cuid='{}'".format(cuid)
                 sqlcur.execute(q)
                 sqlcon.commit()
-                print("Customer record of cuid",cuid,"has been deleted successfully!")
+                print("Customer order record of cuid",cuid,"has been deleted successfully!")
                 print("Thanks for using Dawa Pharma Management System!")
             else:
                 print("Choice is invalid!")
@@ -176,3 +176,6 @@ elif ch==2:
     sqlcur.execute(q)
     sqlcon.commit()
     print("Thanks for signing up!")
+else:
+    print("choice is invalid!")
+    print("Thanks for visiting Dawa Pharma!")
